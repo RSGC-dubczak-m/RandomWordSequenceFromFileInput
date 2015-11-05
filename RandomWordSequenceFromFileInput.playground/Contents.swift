@@ -67,10 +67,10 @@ Each word from the input file will be a separate element in the array.
 let delimiters = NSCharacterSet(charactersInString: ", \n")
 
 // Break the string up into an array using delimiters created above
-let words = content.componentsSeparatedByCharactersInSet(delimiters)
+let inputWords = content.componentsSeparatedByCharactersInSet(delimiters)
 
 // Review the contents of the array (click the + button in the sidebar to show the result)
-words
+inputWords
 /*:
 
 Now you have the entire contents of your text file, separated into individual words, and stored in a regular array.
@@ -111,7 +111,7 @@ Goal #1
 
 My algorithm
 ------------
-
+loop over all the words and counts them
 
 My assumptions
 --------------
@@ -125,6 +125,21 @@ Probable data structures
 
 // Implement Goal #1 below...
 
+//string
+var wordCounts = [String:Int]()
+
+for word in inputWords {
+    word
+    if wordCounts[word] == nil {
+        wordCounts[word] = 1 //first time
+    }else{
+        //already in dictionary
+        //adding one into current count
+        wordCounts[word]! = wordCounts[word]! + 1
+    }
+    //build the dictionary list of letter counts
+
+}
 
 
 /*: 
@@ -176,7 +191,24 @@ My assumptions
 
 // Implement Goal #2 below...
 
+//empty dictionary
+var wordProbabilities = [String:Float]()
 
+//loop over list of letter counts
+for (word,count) in wordCounts{
+    wordProbabilities[word] = Float(count)/Float(inputWords.count) * 100
+}
+
+wordProbabilities
+
+var total:Float = 0.0
+
+for (word,probabilities) in wordProbabilities {
+    total = total + probabilities
+    
+total
+
+wordProbabilities["the"]
 /*:
 
 ## Goal 3
