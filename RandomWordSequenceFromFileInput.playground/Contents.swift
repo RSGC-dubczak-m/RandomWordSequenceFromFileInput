@@ -205,7 +205,7 @@ var total:Float = 0.0
 
 for (word,probabilities) in wordProbabilities {
     total = total + probabilities
-    
+}
 total
 
 wordProbabilities["the"]
@@ -255,4 +255,26 @@ My assumptions
 
 // Implement Goal #3 below...
 
+var outputString: String = ""
 
+for _ in 1...30 {
+    
+    let newRandomValue = arc4random_uniform(1000)
+    
+    let newRandomValueFloat = Float(newRandomValue) / 10
+    
+    var upperValue: Float = 0
+    for (word,probability) in wordProbabilities {
+        
+        upperValue += probability
+        
+        if (newRandomValueFloat < upperValue) {
+            
+            outputString += String(word)
+            outputString += " "
+            
+            break
+        }
+    }
+}
+outputString
